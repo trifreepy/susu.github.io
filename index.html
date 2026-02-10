@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gửi em — Valentine 14/02</title>
+  <style>
+    :root{
+      --bg1:#0b1020; --bg2:#1b0b2a; --card:rgba(255,255,255,.08);
+      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.7);
+      --accent:#ff4d8d; --accent2:#ffb3c7;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background: radial-gradient(1000px 600px at 20% 10%, rgba(255,77,141,.25), transparent 60%),
+                  radial-gradient(900px 500px at 80% 30%, rgba(255,179,199,.20), transparent 55%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+    a{color:inherit}
+    .wrap{max-width:980px; margin:0 auto; padding:24px}
+    .hero{
+      display:grid; gap:16px; padding:26px 18px; border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border-radius:22px; position:relative; overflow:hidden;
+    }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14); width:max-content; font-size:13px;
+    }
+    .title{font-size:34px; line-height:1.15; margin:0}
+    .sub{margin:0; color:var(--muted); font-size:15px}
+    .grid{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; margin-top:14px;
+    }
+    @media (max-width:860px){ .grid{grid-template-columns:1fr} .title{font-size:28px} }
+    .card{
+      border:1px solid rgba(255,255,255,.14);
+      background:var(--card);
+      border-radius:18px; padding:16px;
+      backdrop-filter: blur(10px);
+    }
+    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    button{
+      cursor:pointer; border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.10); color:var(--text);
+      padding:10px 14px; border-radius:12px; font-weight:600;
+    }
+    button.primary{background:linear-gradient(90deg, var(--accent), #ff7aa8); border:none;}
+    .count{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:10px;
+    }
+    .pill{
+      padding:12px; border-radius:14px; text-align:center;
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+    }
+    .n{font-size:22px; font-weight:800}
+    .lab{font-size:12px; color:var(--muted); margin-top:4px}
+    .section{margin-top:16px}
+    .h2{margin:0 0 10px; font-size:18px}
+    .timeline{display:grid; gap:10px}
+    .titem{display:grid; gap:6px; padding:12px; border-radius:14px;
+      background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12);}
+    .date{font-size:12px; color:var(--accent2); font-weight:700}
+    .muted{color:var(--muted)}
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+    @media (max-width:860px){ .gallery{grid-template-columns:repeat(2,1fr)} }
+    .ph{
+      width:100%; aspect-ratio: 4/3; border-radius:14px; object-fit:cover;
+      border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06);
+    }
+    .modal{
+      position:fixed; inset:0; display:none; place-items:center;
+      background:rgba(0,0,0,.55); padding:18px;
+    }
+    .modal.on{display:grid}
+    .paper{
+      max-width:720px; width:100%;
+      border-radius:18px; padding:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.08));
+      border:1px solid rgba(255,255,255,.16);
+    }
+    .paper h3{margin:0 0 8px}
+    .paper p{margin:0; color:var(--text); line-height:1.7}
+    .paper .sig{margin-top:12px; color:var(--muted)}
+    /* hearts */
+    .heart{
+      position:absolute; inset:auto; opacity:.28; filter: blur(.1px);
+      animation: floatUp 10s linear infinite;
+    }
+    @keyframes floatUp{
+      from{ transform: translateY(40px) scale(.9); opacity:.0 }
+      10%{opacity:.28}
+      to{ transform: translateY(-520px) scale(1.15); opacity:0 }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero" id="hero">
+      <div class="badge">💌 Surprise Valentine • 14/02/2026</div>
+      <h1 class="title">Gửi <span style="color:var(--accent2)">em</span> — món quà nhỏ trên Internet</h1>
+      <p class="sub">Một trang web “bí mật” chỉ dành cho 2 đứa mình. (Nhấn <b>Mở thư</b> nhé 😳)</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="h2">⏳ Đếm ngược đến 14/02</div>
+          <div class="count" id="count">
+            <div class="pill"><div class="n" id="d">0</div><div class="lab">Ngày</div></div>
+            <div class="pill"><div class="n" id="h">0</div><div class="lab">Giờ</div></div>
+            <div class="pill"><div class="n" id="m">0</div><div class="lab">Phút</div></div>
+            <div class="pill"><div class="n" id="s">0</div><div class="lab">Giây</div></div>
+          </div>
+
+          <div class="btns">
+            <button class="primary" id="openLetter">💗 Mở thư</button>
+            <button id="secret">🔒 Nút bí mật</button>
+          </div>
+
+          <p class="muted" style="margin-top:10px">
+            Gợi ý: bạn thay tên, ảnh, và nội dung thư cho đúng câu chuyện của bạn.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="h2">🫶 Vì sao anh thương em</div>
+          <ul class="muted" style="line-height:1.75; margin:8px 0 0; padding-left:18px">
+            <li>Em làm anh thấy “nhà” ở bất cứ đâu.</li>
+            <li>Em cười là ngày bớt mệt.</li>
+            <li>Em vừa dịu dàng vừa mạnh mẽ (đúng kiểu anh nể).</li>
+            <li>Ở cạnh em, anh muốn tốt hơn mỗi ngày.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section card">
+        <div class="h2">🗓️ Timeline kỷ niệm</div>
+        <div class="timeline">
+          <div class="titem">
+            <div class="date">[THAY NGÀY] • Lần đầu gặp nhau</div>
+            <div>Khoảnh khắc nhỏ mà anh nhớ mãi.</div>
+          </div>
+          <div class="titem">
+            <div class="date">[THAY NGÀY] • Buổi hẹn đáng nhớ</div>
+            <div>Điều khiến anh nghĩ: “À, là người này rồi.”</div>
+          </div>
+          <div class="titem">
+            <div class="date">[THAY NGÀY] • Một cột mốc của 2 đứa</div>
+            <div>Không cần hoành tráng, chỉ cần có em.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section card">
+        <div class="h2">📷 Góc ảnh (thay ảnh của 2 bạn)</div>
+        <div class="gallery">
+          <img class="ph" src="images/1.jpg" alt="photo 1" onerror="this.style.display='none'">
+          <img class="ph" src="images/2.jpg" alt="photo 2" onerror="this.style.display='none'">
+          <img class="ph" src="images/3.jpg" alt="photo 3" onerror="this.style.display='none'">
+          <img class="ph" src="images/4.jpg" alt="photo 4" onerror="this.style.display='none'">
+          <img class="ph" src="images/5.jpg" alt="photo 5" onerror="this.style.display='none'">
+          <img class="ph" src="images/6.jpg" alt="photo 6" onerror="this.style.display='none'">
+        </div>
+        <p class="muted" style="margin-top:10px">
+          Mẹo: nếu chưa có ảnh sẵn, bạn cứ để trống cũng được — trang vẫn chạy.
+        </p>
+      </div>
+
+      <div class="section card">
+        <div class="h2">🎧 Bài hát của tụi mình</div>
+        <p class="muted" style="margin:0">
+          Dán link Spotify/YouTube ở đây (để trong code block, bạn thay lại):
+        </p>
+        <pre style="margin-top:10px; padding:12px; border-radius:14px; background:rgba(0,0,0,.25); overflow:auto">
+https://open.spotify.com/track/...
+https://www.youtube.com/watch?v=...
+        </pre>
+      </div>
+
+      <p class="muted" style="margin:12px 4px 0">
+        Made with 💗 by <b>[TÊN BẠN]</b> for <b>[TÊN BẠN GÁI]</b>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Letter Modal -->
+  <div class="modal" id="modal">
+    <div class="paper">
+      <h3>💌 Thư gửi em</h3>
+      <p id="letter">
+        [Bạn thay đoạn này]
+        <br><br>
+        Em à, cảm ơn em vì đã đến, ở lại, và thương anh theo cách rất riêng.
+        Ngày 14/02 này, anh chỉ muốn nói: <b>Anh thương em nhiều</b>.
+        <br><br>
+        Cho anh nắm tay em đi thêm nhiều mùa Valentine nữa nhé?
+      </p>
+      <div class="sig">— <b>[TÊN BẠN]</b></div>
+      <div class="btns" style="margin-top:12px">
+        <button id="close">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Countdown to 2026-02-14 00:00 in Asia/Ho_Chi_Minh (UTC+7)
+    const target = new Date("2026-02-13T17:00:00Z"); // 00:00 +07 is 17:00Z previous day
+    const $ = (id)=>document.getElementById(id);
+
+    function tick(){
+      const now = new Date();
+      let diff = Math.max(0, target - now);
+      const d = Math.floor(diff / 86400000); diff -= d*86400000;
+      const h = Math.floor(diff / 3600000);  diff -= h*3600000;
+      const m = Math.floor(diff / 60000);    diff -= m*60000;
+      const s = Math.floor(diff / 1000);
+
+      $("d").textContent = d;
+      $("h").textContent = h;
+      $("m").textContent = m;
+      $("s").textContent = s;
+    }
+    setInterval(tick, 1000); tick();
+
+    // Modal
+    const modal = $("modal");
+    $("openLetter").onclick = ()=> modal.classList.add("on");
+    $("close").onclick = ()=> modal.classList.remove("on");
+    modal.onclick = (e)=> { if(e.target === modal) modal.classList.remove("on"); }
+
+    // Secret button
+    $("secret").onclick = ()=>{
+      alert("Bí mật nè: Em là điều dịu dàng nhất anh từng gặp 💗");
+      spawnHearts(12);
+    };
+
+    // Floating hearts
+    function spawnHearts(n=8){
+      const hero = $("hero");
+      for(let i=0;i<n;i++){
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.textContent = Math.random() > .35 ? "💗" : "💞";
+        h.style.left = (10 + Math.random()*80) + "%";
+        h.style.bottom = (-10 - Math.random()*40) + "px";
+        h.style.fontSize = (14 + Math.random()*22) + "px";
+        h.style.animationDuration = (6 + Math.random()*6) + "s";
+        hero.appendChild(h);
+        setTimeout(()=>h.remove(), 12000);
+      }
+    }
+    // subtle hearts on load
+    setTimeout(()=>spawnHearts(10), 600);
+  </script>
+</body>
+</html>
